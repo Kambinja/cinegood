@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   root "pages#home"
   get "Quem" => "pages#quem_somos"
   
-  resources :cartazs do
-    resources :comentarios
-  end
-  
+  resources :cartazs 
+  resources :comentarios  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
