@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">CineGood</a>
+    <li> <%= link_to "CineGood", root_path, class: "navbar-brand" %> </li>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -15,9 +15,14 @@
           <li><%= link_to "Home", root_path %></li>
 	
            <% if usuario_signed_in? %>
-            <li><%= link_to "Log out", destroy_usuario_session_path, method: :delete %></li>
+		   <li>
+		   	<%= link_to cartazs_path do %> Cartazs
+			<% end %>
+		   </li>
+            <li><%= link_to "Minha conta", edit_usuario_registration_path %></li>
+			<li><%= link_to "Sair", destroy_usuario_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Sign in", new_usuario_session_path %></li>
+            <li><%= link_to "Entar", new_usuario_session_path %></li>	
           <% end %>
       </ul> 
   </div><!-- /.navbar-collapse -->

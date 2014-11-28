@@ -1,11 +1,7 @@
 <div class="jumbotron center">
-     <h2>Welcome to CineGood!</h2>
-     <% if usuario_signed_in? %>
-          # do something
-     <% else %>
+     <h2>Bem vindo ao CineGood!</h2>    
        <p>
-         <%= link_to "Log in", new_usuario_session_path, class: "btn btn-default btn-md" %>
-         <%= link_to "Sign up", new_usuario_registration_path, class: "btn btn-primary btn-md" %>
+         <%= link_to "Entrar", new_usuario_session_path, class: "btn btn-default btn-md" %>
+         <%= link_to "Inscreva-se", new_usuario_registration_path, class: "btn btn-primary btn-md" %>
        </p>
-  <% end %>  
-</div>
+ </div>
