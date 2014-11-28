@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cartaz:</strong>
+  <%= @comentario.cartaz_id %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @comentario.body %>
+</p>
+
+<%= link_to 'Edit', edit_comentario_path(@comentario) %> |
+<%= link_to 'Back', comentarios_path %>

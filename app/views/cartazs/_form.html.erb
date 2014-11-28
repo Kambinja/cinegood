@@ -1,0 +1,33 @@
+<%= form_for(@cartaz) do |f| %>
+  <% if @cartaz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cartaz.errors.count, "error") %> prohibited this cartaz from being saved:</h2>
+
+      <ul>
+      <% @cartaz.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :imagem %><br>
+    <%= f.text_field :imagem %>
+  </div>
+  <div class="field">
+    <%= f.label :titulo %><br>
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :sinopse %><br>
+    <%= f.text_area :sinopse %>
+  </div>
+  <div class="field">
+    <%= f.label :cinema %><br>
+    <%= f.text_field :cinema %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

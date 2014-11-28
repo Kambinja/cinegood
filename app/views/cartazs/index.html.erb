@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Imagem</th>
+      <th>Titulo</th>
+      <th>Sinopse</th>
+      <th>Cinema</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cartazs.each do |cartaz| %>
+      <tr>
+        <td><%= cartaz.imagem %></td>
+        <td><%= cartaz.titulo %></td>
+        <td><%= cartaz.sinopse %></td>
+        <td><%= cartaz.cinema %></td>
+        <td><%= link_to 'Show', cartaz %></td>
+        <td><%= link_to 'Edit', edit_cartaz_path(cartaz) %></td>
+        <td><%= link_to 'Destroy', cartaz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cartaz', new_cartaz_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Imagem:</strong>
+  <%= @cartaz.imagem %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @cartaz.titulo %>
+</p>
+
+<p>
+  <strong>Sinopse:</strong>
+  <%= @cartaz.sinopse %>
+</p>
+
+<p>
+  <strong>Cinema:</strong>
+  <%= @cartaz.cinema %>
+</p>
+
+<%= link_to 'Edit', edit_cartaz_path(@cartaz) %> |
+<%= link_to 'Back', cartazs_path %>
