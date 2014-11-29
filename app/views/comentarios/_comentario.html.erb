@@ -1,0 +1,6 @@
+<%= div_for comentario do %>
+ <p>
+ <em><strong><%= time_ago_in_words(comentario.created_at)%> </strong></em><br/>
+ <%= comentario.body %>
+ </p>
+ <% end %>

@@ -1,0 +1,4 @@
+var new_comentario = $("<%= escape_javascript(render(:partial => @comentario))%>").hide();
+$("#comentarios").prepend(new_comentario);
+$("#comentario_<%= @comentario.id %>").fadeIn("slow");
+$("#new_comentario")[0].reset();

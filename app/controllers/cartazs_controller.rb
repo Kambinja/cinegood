@@ -1,5 +1,6 @@
 class CartazsController < ApplicationController
   before_action :set_cartaz, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, except: [:index, :show]
 
   # GET /cartazs
   # GET /cartazs.json
@@ -70,5 +71,11 @@ class CartazsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cartaz_params
       params.require(:cartaz).permit(:imagem, :titulo, :sinopse, :cinema)
+    end
+    
+    def authenticate
+      authenticate_or_request_with_http_basic do |name, password|
+        name == "admin" && password == "secret"
+      end
     end
 end

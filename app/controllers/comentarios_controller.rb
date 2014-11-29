@@ -24,12 +24,14 @@ class ComentariosController < ApplicationController
   # POST /comentarios
   # POST /comentarios.json
   def create
-    @comentario = Comentario.new(comentario_params)
+    @cartaz = Cartaz.find(params[:cartaz_id])
+    @comentario = @cartaz.comentarios.create(comentario_params)
 
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully created.' }
+        format.html { redirect_to @cartaz, notice: 'Comentario was successfully created.' }
         format.json { render :show, status: :created, location: @comentario }
+        format.js # create.js.erb
       else
         format.html { render :new }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }

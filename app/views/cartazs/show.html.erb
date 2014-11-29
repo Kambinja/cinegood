@@ -1,24 +1,33 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Imagem:</strong>
   <%= @cartaz.imagem %>
 </p>
-
 <p>
   <strong>Titulo:</strong>
   <%= @cartaz.titulo %>
 </p>
-
 <p>
   <strong>Sinopse:</strong>
   <%= @cartaz.sinopse %>
 </p>
-
 <p>
   <strong>Cinema:</strong>
   <%= @cartaz.cinema %>
 </p>
-
 <%= link_to 'Edit', edit_cartaz_path(@cartaz) %> |
 <%= link_to 'Back', cartazs_path %>
+
+<h3>Comentarios</h3>
+<div id="comentarios">
+	<% @cartaz.comentarios.each do |comentario| %>
+	<%= render :partial => @cartaz.comentarios.reverse %>
+<% end %>
+</div>
+
+<%= form_for([@cartaz, Comentario.new], remote: true) do |f| %>
+  <p> <% f.label :body%> <br/>
+	  <%= f.text_area :body, :rows => '4', :cols => 50, placeholder: "deixe seu comentario..."  %>
+  </p>
+  <p> <%= f.submit "+comentario"%></p>
+  <% end %>
