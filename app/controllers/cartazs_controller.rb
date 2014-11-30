@@ -27,31 +27,28 @@ class CartazsController < ApplicationController
   def create
     @cartaz = Cartaz.new(cartaz_params)
       if @cartaz.save                 
-        format.html { redirect_to @cartaz, notice: 'Cartaz criado com sucesso.'}
-          format.json { render :show, status: :created, location: @cartaz }
+        redirect_to @cartaz, notice: 'Cartaz criado com sucesso.'
         else
-          format.html { render :new }
-          format.json { render json: @cartaz.errors, status: :unprocessable_entity }
-        end
+          render action: 'new'
       end
     end
 
   # PATCH/PUT /cartazs/1
   # PATCH/PUT /cartazs/1.json
   def update
-      if @cartaz.update(cartaz_params)
-        redirect_to @cartaz, notice: 'Cartaz actualizado com sucesso.'
-      else
-        render action: 'edit'
+        if @cartaz.update(cartaz_params)
+          redirect_to @cartaz, notice: 'O cartaz foi actualizado com sucesso.'
+        else
+          render action: 'edit'
+      end
     end
-  end
 
   # DELETE /cartazs/1
   # DELETE /cartazs/1.json
   def destroy
     @cartaz.destroy
-      redirect_to cartazs_url
-  end
+      redirect_to cartazs_url, notice: 'Cartaz eliminadado.'
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -65,6 +62,6 @@ class CartazsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def cartaz_params
-      params.require(:cartaz).permit(:imagem, :titulo, :sinopse, :cinema)
+      params.require(:cartaz).permit(:imagem, :titulo, :sinopse, :cinema, :image)
+      end
     end
-    
