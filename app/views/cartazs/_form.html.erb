@@ -11,21 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :imagem %><br>
-    <%= f.text_field :imagem %>
+    <%= f.text_field :imagem, class: "form-control", :cols => 50 %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :titulo %><br>
-    <%= f.text_field :titulo %>
+    <%= f.text_field :titulo, class: "form-control", :cols => 50%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :sinopse %><br>
-    <%= f.text_area :sinopse %>
+    <%= f.text_area :sinopse, class: "form-control", :cols => 50 %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :cinema %><br>
-    <%= f.text_field :cinema %>
+    <%= f.text_field :cinema, class: "form-control", :cols => 50%>
   </div>
   <div class="actions">
     <%= f.submit %>

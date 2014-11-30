@@ -17,8 +17,8 @@
         <td><%= cartaz.sinopse %></td>
         <td><%= cartaz.cinema %></td>
         <td><%= link_to 'Show', cartaz %></td>
-        <td><%= link_to 'Edit', edit_cartaz_path(cartaz) %></td>
-        <td><%= link_to 'Destroy', cartaz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% link_to 'Edit', edit_cartaz_path(cartaz) %></td>
+        <td><% link_to 'Destroy', cartaz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

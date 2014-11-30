@@ -1,6 +1,6 @@
 class CartazsController < ApplicationController
   before_action :set_cartaz, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, except: [:index, :show]
+  before_action :authenticate_usuario!, except: [:index, :show]
 
   # GET /cartazs
   # GET /cartazs.json
@@ -26,29 +26,23 @@ class CartazsController < ApplicationController
   # POST /cartazs.json
   def create
     @cartaz = Cartaz.new(cartaz_params)
-
-    respond_to do |format|
-      if @cartaz.save
-        format.html { redirect_to @cartaz, notice: 'Cartaz was successfully created.' }
-        format.json { render :show, status: :created, location: @cartaz }
-      else
-        format.html { render :new }
-        format.json { render json: @cartaz.errors, status: :unprocessable_entity }
+      if @cartaz.save                 
+        format.html { redirect_to @cartaz, notice: 'Cartaz criado com sucesso.'}
+          format.json { render :show, status: :created, location: @cartaz }
+        else
+          format.html { render :new }
+          format.json { render json: @cartaz.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
 
   # PATCH/PUT /cartazs/1
   # PATCH/PUT /cartazs/1.json
   def update
-    respond_to do |format|
       if @cartaz.update(cartaz_params)
-        format.html { redirect_to @cartaz, notice: 'Cartaz was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cartaz }
+        redirect_to @cartaz, notice: 'Cartaz actualizado com sucesso.'
       else
-        format.html { render :edit }
-        format.json { render json: @cartaz.errors, status: :unprocessable_entity }
-      end
+        render action: 'edit'
     end
   end
 
@@ -56,10 +50,7 @@ class CartazsController < ApplicationController
   # DELETE /cartazs/1.json
   def destroy
     @cartaz.destroy
-    respond_to do |format|
-      format.html { redirect_to cartazs_url, notice: 'Cartaz was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to cartazs_url
   end
 
   private
@@ -67,15 +58,13 @@ class CartazsController < ApplicationController
     def set_cartaz
       @cartaz = Cartaz.find(params[:id])
     end
-
+    
+    def correct_usuario
+      @cartaz = current_usuario.cartazs.find_by(id: params[:id])
+      redirect_to cartazs_path, notice: 'precedimento nao autorizado' if @cartaz.nil?
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def cartaz_params
       params.require(:cartaz).permit(:imagem, :titulo, :sinopse, :cinema)
     end
     
-    def authenticate
-      authenticate_or_request_with_http_basic do |name, password|
-        name == "admin" && password == "secret"
-      end
-    end
-end

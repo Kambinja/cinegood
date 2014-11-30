@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127190016) do
+ActiveRecord::Schema.define(version: 20141130102621) do
 
   create_table "cartazs", force: true do |t|
     t.string   "imagem"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20141127190016) do
     t.string   "cinema"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "comentarios", force: true do |t|
